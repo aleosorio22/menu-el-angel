@@ -20,7 +20,7 @@ body {
 }
 
 header {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://dummyimage.com/1200x400/4CAF50/ffffff.png&text=Café+El+Ángel');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/bg-cover.jpg');
     background-size: cover;
     background-position: center;
     padding: 2rem 1rem;
@@ -67,9 +67,15 @@ nav {
 
 #menu-nav {
     display: flex;
-    justify-content: center;
-    gap: 0.5rem;
+    justify-content: flex-start;
+    gap: 1rem; /* Espacio entre botones */
+    padding: 1rem;
+    overflow-x: auto; /* Agregar scroll horizontal */
+    white-space: nowrap; /* Prevenir que los botones se rompan en varias líneas */
+    scroll-behavior: smooth; /* Suavizar el scroll */
+    background-color: var(--primary-color); /* Asegurar que se mantenga el color de fondo */
 }
+
 
 .category-btn {
     background-color: transparent;
@@ -80,6 +86,11 @@ nav {
     transition: all 0.3s ease;
     font-size: 1rem;
     position: relative;
+    white-space: nowrap; /* Prevenir que el texto dentro del botón se corte */
+}
+
+.category-btn.active {
+    border-bottom: 2px solid var(--accent-color);
 }
 
 .category-btn::after {
@@ -257,6 +268,11 @@ footer {
 
     .view-more-btn {
         font-size: 0.9rem;
+    }
+
+    .category-btn {
+        font-size: 0.85rem; /* Ajustar el tamaño de fuente */
+        padding: 0.4rem 1rem; /* Reducir el padding */
     }
 }
 

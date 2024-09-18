@@ -80,14 +80,39 @@ function showItemDetails(item) {
         <p><strong>Precio:</strong> Q${item.precio.toFixed(2)}</p>
     `;
     modal.style.display = 'block';
+     // Agregar eventos de cierre del modal
+     setupModalEvents(modal);
 }
 
-// Cerrar el modal
-window.onclick = function(event) {
+// Función para configurar los eventos del modal
+function setupModalEvents(modal) {
+    const closeButton = document.querySelector('.close');
+    
+    // Cerrar modal al hacer clic en el botón de cerrar
+    closeButton.addEventListener('click', closeModal);
+
+    // También agregar evento touchstart para móviles
+    closeButton.addEventListener('touchstart', closeModal);
+
+    // Cerrar modal al hacer clic fuera del contenido
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Agregar soporte para eventos táctiles en móviles
+    window.addEventListener('touchstart', function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+}
+
+// Función para cerrar el modal
+function closeModal() {
     const modal = document.getElementById('modal');
-    if (event.target == modal || event.target.classList.contains('close')) {
-        modal.style.display = 'none';
-    }
+    modal.style.display = 'none';
 }
 
 // Inicializar el menú
